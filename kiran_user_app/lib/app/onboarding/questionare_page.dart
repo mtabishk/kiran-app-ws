@@ -41,7 +41,7 @@ class QuestionarePage extends StatelessWidget {
                               fontSize: 20.0,
                               fontWeight: FontWeight.w600,
                             )),
-                        SizedBox(height: 16.0),
+                        SizedBox(height: 32.0),
                         Container(
                           height: 44,
                           width: double.infinity,
