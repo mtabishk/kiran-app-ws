@@ -51,10 +51,7 @@ class IntroductionScreen extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Placeholder(
-                fallbackHeight: 250,
-                fallbackWidth: 250,
-              ),
+              SizedBox(child: Image.asset('assets/icons/user_logo.png')),
               SizedBox(height: 32.0),
               Text(
                 "KIRAN",
