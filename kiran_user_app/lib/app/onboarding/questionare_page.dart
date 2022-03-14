@@ -12,12 +12,16 @@ class _QuestionarePageState extends State<QuestionarePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFC3FDFD),
-      body: PageView.builder(
-        scrollDirection: Axis.vertical,
-        itemBuilder: (context, position) {
-          return _buildQuestionareBody(position: position);
-        },
-        itemCount: 6,
+      body: Scrollbar(
+        trackVisibility: true,
+        showTrackOnHover: true,
+        child: PageView.builder(
+          scrollDirection: Axis.vertical,
+          itemBuilder: (context, position) {
+            return _buildQuestionareBody(position: position);
+          },
+          itemCount: 6,
+        ),
       ),
     );
   }
