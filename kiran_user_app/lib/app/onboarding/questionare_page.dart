@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:kiran_user_app/services/show_onboarding_provider.dart';
+import 'package:provider/provider.dart';
 
 class QuestionarePage extends StatefulWidget {
   const QuestionarePage({Key? key}) : super(key: key);
@@ -27,6 +29,8 @@ class _QuestionarePageState extends State<QuestionarePage> {
   }
 
   Widget _buildQuestionareBody({required int position}) {
+    final _showOnBoarding =
+        Provider.of<ShowOnboardingProvider>(context, listen: false);
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -98,7 +102,11 @@ class _QuestionarePageState extends State<QuestionarePage> {
                     shape: CircleBorder(),
                     primary: Color(0xFF0ACDCF),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    _showOnBoarding.changeQuestionareCompletedValue();
+                    int count = 0;
+                    Navigator.of(context).popUntil((_) => count++ >= 2);
+                  },
                   child: Icon(Icons.arrow_forward_ios),
                 ),
               ),
