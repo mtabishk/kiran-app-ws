@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kiran_user_app/app/onboarding/questionare_page.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({Key? key}) : super(key: key);
@@ -56,7 +57,10 @@ class SignInPage extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     primary: Color(0xFF0ACDCF),
                   ),
-                  onPressed: () {},
+                  onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => QuestionarePage())),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
