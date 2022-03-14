@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kiran_user_app/app/constants.dart';
 import 'package:kiran_user_app/app/home/home_page.dart';
 import 'package:kiran_user_app/app/profile/profile_page.dart';
 import 'package:kiran_user_app/app/services/service_page.dart';
@@ -29,6 +30,7 @@ class _BottomNavigationPageState extends State<BottomNavigationPage> {
         selectedFontSize: 14.0,
         unselectedFontSize: 14.0,
         currentIndex: _currentIndex,
+        selectedItemColor: kPrimaryColor,
         onTap: (index) => setState(() => _currentIndex = index),
         items: [
           BottomNavigationBarItem(

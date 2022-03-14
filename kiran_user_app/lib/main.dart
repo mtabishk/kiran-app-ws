@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kiran_user_app/app/constants.dart';
 import 'package:kiran_user_app/app/landing_page.dart';
 import 'package:kiran_user_app/services/show_onboarding_provider.dart';
 import 'package:provider/provider.dart';
@@ -26,6 +27,11 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.blue,
+        ).copyWith(
+          appBarTheme: AppBarTheme(
+            backgroundColor: kPrimaryColor,
+          ),
+          primaryColor: kPrimaryColor,
         ),
         home: LandingPage(),
       ),
