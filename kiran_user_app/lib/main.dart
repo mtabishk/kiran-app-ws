@@ -4,7 +4,6 @@ import 'package:kiran_user_app/app/landing_page.dart';
 import 'package:kiran_user_app/services/show_onboarding_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'services/shared_preferences_service.dart';
 
 Future<void> main() async {
