@@ -1,3 +1,4 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:kiran_user_app/app/constants.dart';
 import 'package:kiran_user_app/app/landing_page.dart';
@@ -6,9 +7,11 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'services/shared_preferences_service.dart';
 
+List<CameraDescription>? cameras;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Constants.prefs = await SharedPreferences.getInstance();
+  cameras = await availableCameras();
   runApp(const MyApp());
 }
 

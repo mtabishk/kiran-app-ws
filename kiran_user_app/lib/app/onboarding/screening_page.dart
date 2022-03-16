@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:kiran_user_app/app/common_widgets/circle_button.dart';
 import 'package:kiran_user_app/app/constants.dart';
+import 'package:kiran_user_app/app/onboarding/video_screening_page.dart';
 
 class ScreeningPage extends StatelessWidget {
   const ScreeningPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    double _height = MediaQuery.of(context).size.height;
     double _width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SafeArea(
@@ -29,7 +29,13 @@ class ScreeningPage extends StatelessWidget {
                   children: [
                     CustomCircleButtton(
                       color: kPrimaryColor,
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => VideoScreeningPage()),
+                        );
+                      },
                       child: ImageIcon(
                         AssetImage("assets/icons/video-camera.png"),
                         color: Colors.white,
