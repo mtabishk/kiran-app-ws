@@ -31,6 +31,7 @@ class MyApp extends StatelessWidget {
             backgroundColor: kPrimaryColor,
           ),
           primaryColor: kPrimaryColor,
+          scaffoldBackgroundColor: kSecondaryColor,
         ),
         home: LandingPage(),
       ),

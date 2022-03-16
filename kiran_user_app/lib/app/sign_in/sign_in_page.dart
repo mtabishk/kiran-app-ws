@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kiran_user_app/app/onboarding/questionare_page.dart';
+import 'package:kiran_user_app/app/onboarding/screening_page.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({Key? key}) : super(key: key);
@@ -60,7 +61,8 @@ class SignInPage extends StatelessWidget {
                   onPressed: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => QuestionarePage())),
+                        builder: (context) => ScreeningPage(),
+                      )),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
