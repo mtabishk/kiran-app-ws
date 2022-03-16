@@ -1,8 +1,6 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:kiran_user_app/app/common_widgets/circle_button.dart';
-import 'package:kiran_user_app/app/common_widgets/show_alert_dialog.dart';
-import 'package:kiran_user_app/app/constants.dart';
 import 'package:kiran_user_app/main.dart';
 
 class VideoScreeningPage extends StatefulWidget {
@@ -31,21 +29,6 @@ class _VideoScreeningPageState extends State<VideoScreeningPage> {
   void dispose() {
     controller.dispose();
     super.dispose();
-  }
-
-  Future<void> _confirmCancel() async {
-    final didRequestSignOut = await showAlertDialog(
-      context,
-      backgroundColor: kSecondaryColor,
-      title: 'End Screening',
-      content: 'Are you sure that you want to end the video screening?',
-      defaultActionText: 'Cancel',
-      cancelActionText: 'End',
-    );
-
-    if (didRequestSignOut == true) {
-      Navigator.of(context).pop();
-    }
   }
 
   @override
@@ -96,7 +79,7 @@ class _VideoScreeningPageState extends State<VideoScreeningPage> {
                           size: 28.0,
                           color: Colors.white,
                         ),
-                        onTap: _confirmCancel,
+                        onTap: () => Navigator.of(context).pop(),
                       ),
                     ),
                   ],

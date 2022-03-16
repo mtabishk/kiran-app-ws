@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:kiran_user_app/app/common_widgets/circle_button.dart';
 import 'package:kiran_user_app/app/constants.dart';
-import 'package:kiran_user_app/app/onboarding/video_screening_page.dart';
+import 'package:kiran_user_app/app/screening/audio_screening_page.dart';
+import 'package:kiran_user_app/app/screening/chat_screening_page.dart';
+import 'package:kiran_user_app/app/screening/video_screening_page.dart';
 
 class ScreeningPage extends StatelessWidget {
   const ScreeningPage({Key? key}) : super(key: key);
@@ -43,7 +45,13 @@ class ScreeningPage extends StatelessWidget {
                     ),
                     CustomCircleButtton(
                       color: kPrimaryColor,
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => AudioScreeningPage()),
+                        );
+                      },
                       child: ImageIcon(
                         AssetImage("assets/icons/mic.png"),
                         color: Colors.white,
@@ -51,7 +59,13 @@ class ScreeningPage extends StatelessWidget {
                     ),
                     CustomCircleButtton(
                       color: kPrimaryColor,
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ChatScreeningPage()),
+                        );
+                      },
                       child: ImageIcon(
                         AssetImage("assets/icons/chat.png"),
                         color: Colors.white,

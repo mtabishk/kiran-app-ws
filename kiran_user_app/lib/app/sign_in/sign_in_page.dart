@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kiran_user_app/app/onboarding/screening_page.dart';
+import 'package:kiran_user_app/app/screening/screening_page.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({Key? key}) : super(key: key);
