@@ -1,6 +1,7 @@
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
 import 'package:kiran_user_app/app/constants.dart';
+import 'package:rive/rive.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 
 class AudioScreeningPage extends StatefulWidget {
@@ -57,12 +58,17 @@ class _AudioScreeningPageState extends State<AudioScreeningPage> {
               flex: 1,
               child: Stack(
                 children: [
-                  IconButton(
-                      onPressed: () => Navigator.of(context).pop(),
-                      icon: Icon(
-                        Icons.close,
-                      )),
-                  Container(),
+                  Positioned.fill(
+                      child: RiveAnimation.asset(
+                          'assets/animations/flutter-puzzle.riv')),
+                  Positioned(
+                    left: 8.0,
+                    child: IconButton(
+                        onPressed: () => Navigator.of(context).pop(),
+                        icon: Icon(
+                          Icons.close,
+                        )),
+                  ),
                 ],
               ),
             ),
@@ -78,10 +84,10 @@ class _AudioScreeningPageState extends State<AudioScreeningPage> {
                           child: Text(
                             _text,
                             style: TextStyle(
-                              fontSize: 16.0,
-                              color: Colors.black87,
-                              fontWeight: FontWeight.w400,
-                            ),
+                                fontSize: 16.0,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                backgroundColor: Colors.black.withOpacity(0.7)),
                           )),
                     ],
                   ),
