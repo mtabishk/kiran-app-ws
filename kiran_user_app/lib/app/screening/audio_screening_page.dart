@@ -1,4 +1,7 @@
+import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
+import 'package:kiran_user_app/app/constants.dart';
+import 'package:speech_to_text/speech_to_text.dart' as stt;
 
 class AudioScreeningPage extends StatefulWidget {
   const AudioScreeningPage({Key? key}) : super(key: key);
@@ -8,54 +11,99 @@ class AudioScreeningPage extends StatefulWidget {
 }
 
 class _AudioScreeningPageState extends State<AudioScreeningPage> {
-  bool _micOpened = false;
+  late stt.SpeechToText _speech;
+  bool _isListening = false;
+  String _text = "Press the button and start speaking ";
+  double _confidence = 1.0;
+
+  @override
+  void initState() {
+    super.initState();
+    _speech = stt.SpeechToText();
+  }
+
+  Future<void> _listenToAudio() async {
+    if (!_isListening) {
+      bool available = await _speech.initialize(
+        onStatus: (val) => print('onStatus: $val'),
+        onError: (val) => print('onError: $val'),
+      );
+      if (available) {
+        setState(() => _isListening = true);
+        _speech.listen(
+            onResult: (val) => setState(() {
+                  _text = val.recognizedWords;
+                  if (val.hasConfidenceRating && val.confidence > 0) {
+                    _confidence = val.confidence;
+                    print('Confidence: $_confidence');
+                  }
+                }));
+      }
+    } else {
+      setState(() => _isListening = false);
+      _speech.stop();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             // TODO: show Doctor animation here
-            Spacer(),
-            Stack(
-              alignment: Alignment.bottomRight,
-              children: [
-                //TODO: show video or audio or chat widget here
-                Container(
-                  height: size.width * 0.8,
-                  width: size.width,
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      IconButton(
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                        icon: Icon(Icons.close),
-                      ),
-                      IconButton(
-                        onPressed: () {
-                          setState(() {
-                            _micOpened = !_micOpened;
-                          });
-                        },
-                        icon: _micOpened
-                            ? Icon(Icons.settings_voice, size: 38.0)
-                            : Icon(Icons.keyboard_voice, size: 38.0),
-                      )
+            Expanded(
+              flex: 1,
+              child: Stack(
+                children: [
+                  IconButton(
+                      onPressed: () => Navigator.of(context).pop(),
+                      icon: Icon(
+                        Icons.close,
+                      )),
+                  Container(),
+                ],
+              ),
+            ),
+            Expanded(
+              flex: 1,
+              child: Container(
+                width: double.infinity,
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: <Widget>[
+                      Container(
+                          padding: const EdgeInsets.all(18.0),
+                          child: Text(
+                            _text,
+                            style: TextStyle(
+                              fontSize: 16.0,
+                              color: Colors.black87,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          )),
                     ],
                   ),
                 ),
-              ],
+              ),
             ),
           ],
         ),
       ),
+      floatingActionButton: AvatarGlow(
+        animate: _isListening,
+        glowColor: kPrimaryColor,
+        endRadius: 55.0,
+        duration: const Duration(milliseconds: 300),
+        repeat: true,
+        repeatPauseDuration: const Duration(milliseconds: 300),
+        child: FloatingActionButton(
+          onPressed: _listenToAudio,
+          child: _isListening ? Icon(Icons.mic) : Icon(Icons.mic_none),
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }

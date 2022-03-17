@@ -8,7 +8,6 @@ class ChatScreeningPage extends StatefulWidget {
 }
 
 class _ChatScreeningPageState extends State<ChatScreeningPage> {
-  bool _micOpened = false;
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;

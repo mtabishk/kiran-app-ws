@@ -35,6 +35,9 @@ class MyApp extends StatelessWidget {
           ),
           primaryColor: kPrimaryColor,
           scaffoldBackgroundColor: kSecondaryColor,
+          floatingActionButtonTheme: FloatingActionButtonThemeData(
+            backgroundColor: kPrimaryColor,
+          ),
         ),
         home: LandingPage(),
       ),
