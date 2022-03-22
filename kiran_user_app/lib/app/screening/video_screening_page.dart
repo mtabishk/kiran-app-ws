@@ -92,49 +92,46 @@ class _VideoScreeningPageState extends State<VideoScreeningPage> {
               ),
             ),
             Expanded(
-              flex: 1,
-              child: Container(
-                width: double.infinity,
-                child: SingleChildScrollView(
-                  child: Stack(
-                    alignment: Alignment.topLeft,
-                    children: [
-                      //TODO: show video or audio or chat widget here
-                      Container(
-                        height: size.width * 0.8,
-                        width: size.width,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                          child: Builder(builder: (context) {
-                            if (!controller.value.isInitialized) {
-                              return Container();
-                            }
-                            return SizedBox(
-                              height: size.width * 0.8,
-                              width: size.width * 0.5,
-                              child: AspectRatio(
-                                  aspectRatio: controller.value.aspectRatio,
-                                  child: CameraPreview(controller)),
-                            );
-                          }),
-                        ),
-                      ),
-                      Container(
-                          padding: const EdgeInsets.all(18.0),
-                          child: Text(
-                            _text,
-                            style: TextStyle(
-                                fontSize: 16.0,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                backgroundColor: Colors.black.withOpacity(0.7)),
-                          )),
-                    ],
+              flex: 2,
+              child: Stack(
+                alignment: Alignment.bottomLeft,
+                children: [
+                  Container(
+                    height: size.width * 0.8,
+                    width: size.width,
                   ),
-                ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                      child: Builder(builder: (context) {
+                        if (!controller.value.isInitialized) {
+                          return Container();
+                        }
+                        return SizedBox(
+                          height: size.width * 0.8,
+                          width: size.width * 0.45,
+                          child: AspectRatio(
+                              aspectRatio: controller.value.aspectRatio,
+                              child: CameraPreview(controller)),
+                        );
+                      }),
+                    ),
+                  ),
+                  Positioned(
+                    top: 10.0,
+                    child: Container(
+                        padding: const EdgeInsets.all(18.0),
+                        child: Text(
+                          " " + _text + " ",
+                          style: TextStyle(
+                              fontSize: 16.0,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              backgroundColor: Colors.black.withOpacity(0.7)),
+                        )),
+                  ),
+                ],
               ),
             ),
           ],

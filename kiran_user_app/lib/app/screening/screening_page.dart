@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:kiran_user_app/app/common_widgets/circle_button.dart';
 import 'package:kiran_user_app/app/constants.dart';
@@ -38,49 +39,73 @@ class ScreeningPage extends StatelessWidget {
                     height: _width * 0.8,
                     width: _width,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
                     children: [
-                      CustomCircleButtton(
-                        color: kPrimaryColor,
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => VideoScreeningPage()),
-                          );
-                        },
-                        child: ImageIcon(
-                          AssetImage("assets/icons/video-camera.png"),
-                          color: Colors.white,
-                        ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          CustomCircleButtton(
+                            color: kPrimaryColor,
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => VideoScreeningPage()),
+                              );
+                            },
+                            child: ImageIcon(
+                              AssetImage("assets/icons/video-camera.png"),
+                              color: Colors.white,
+                            ),
+                          ),
+                          CustomCircleButtton(
+                            color: kPrimaryColor,
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AudioScreeningPage()),
+                              );
+                            },
+                            child: ImageIcon(
+                              AssetImage("assets/icons/mic.png"),
+                              color: Colors.white,
+                            ),
+                          ),
+                          CustomCircleButtton(
+                            color: kPrimaryColor,
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ChatScreeningPage()),
+                              );
+                            },
+                            child: ImageIcon(
+                              AssetImage("assets/icons/chat.png"),
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
                       ),
-                      CustomCircleButtton(
-                        color: kPrimaryColor,
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => AudioScreeningPage()),
-                          );
-                        },
-                        child: ImageIcon(
-                          AssetImage("assets/icons/mic.png"),
-                          color: Colors.white,
+                      SizedBox(height: 48),
+                      DefaultTextStyle(
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          color: kPrimaryColor,
+                          fontWeight: FontWeight.bold,
                         ),
-                      ),
-                      CustomCircleButtton(
-                        color: kPrimaryColor,
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ChatScreeningPage()),
-                          );
-                        },
-                        child: ImageIcon(
-                          AssetImage("assets/icons/chat.png"),
-                          color: Colors.white,
+                        child: AnimatedTextKit(
+                          pause: Duration(seconds: 2),
+                          repeatForever: true,
+                          animatedTexts: [
+                            TypewriterAnimatedText(
+                                'Choose an option to start the screening'),
+                          ],
+                          onTap: () {
+                            print("Tap Event");
+                          },
                         ),
                       ),
                     ],

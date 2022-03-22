@@ -73,7 +73,7 @@ class _AudioScreeningPageState extends State<AudioScreeningPage> {
               ),
             ),
             Expanded(
-              flex: 1,
+              flex: 2,
               child: Container(
                 width: double.infinity,
                 child: SingleChildScrollView(
@@ -82,7 +82,7 @@ class _AudioScreeningPageState extends State<AudioScreeningPage> {
                       Container(
                           padding: const EdgeInsets.all(18.0),
                           child: Text(
-                            _text,
+                            " " + _text + " ",
                             style: TextStyle(
                                 fontSize: 16.0,
                                 color: Colors.white,

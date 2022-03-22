@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kiran_user_app/app/sign_in/sign_in_page.dart';
 
@@ -45,13 +46,16 @@ class IntroductionScreen extends StatelessWidget {
           ),
         ),
         Positioned(
-          top: _height / 4,
+          top: _height / 9,
           left: _width / 8,
           right: _width / 8,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              SizedBox(child: Image.asset('assets/icons/user_logo.png')),
+              SizedBox(
+                  height: _height * 0.5,
+                  width: _height * 0.5,
+                  child: Image.asset('assets/icons/onboarding-logo.png')),
               SizedBox(height: 32.0),
               Text(
                 "KIRAN",
@@ -74,27 +78,31 @@ class IntroductionScreen extends StatelessWidget {
         Positioned(
           bottom: 40.0,
           right: 10,
-          child: Row(
-            children: [
-              Text(
-                "Next",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16.0,
+          child: GestureDetector(
+            onTap: () => Navigator.push(
+              context,
+              CupertinoPageRoute(builder: (context) => SignInPage()),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  "Next",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16.0,
+                  ),
                 ),
-              ),
-              IconButton(
-                icon: Icon(
-                  Icons.arrow_forward,
-                  color: Color(0xFF0ACDCF),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Icon(
+                    Icons.arrow_forward,
+                    color: Color(0xFF0ACDCF),
+                  ),
                 ),
-                onPressed: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => SignInPage()),
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ]),
