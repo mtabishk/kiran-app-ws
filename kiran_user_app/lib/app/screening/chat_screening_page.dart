@@ -134,7 +134,7 @@ class _ChatScreeningPageState extends State<ChatScreeningPage> {
                                     radius: 20.0,
                                     backgroundColor: Colors.grey[300],
                                     backgroundImage: AssetImage(
-                                        "assets/icons/sarah-abs-picture.jpg"),
+                                        "assets/images/tabish-picture.png"),
                                   ),
                                 ),
                             ],

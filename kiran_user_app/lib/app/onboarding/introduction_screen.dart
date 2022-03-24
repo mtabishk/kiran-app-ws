@@ -78,30 +78,38 @@ class IntroductionScreen extends StatelessWidget {
         Positioned(
           bottom: 40.0,
           right: 10,
-          child: GestureDetector(
+          child: InkWell(
             onTap: () => Navigator.push(
               context,
               CupertinoPageRoute(builder: (context) => SignInPage()),
             ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  "Next",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16.0,
-                  ),
+            child: Material(
+              color: Colors.transparent,
+              child: Container(
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(16.0, 0.0, 0.0, 0.0),
+                      child: Text(
+                        "Next",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16.0,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Icon(
+                        Icons.arrow_forward,
+                        color: Color(0xFF0ACDCF),
+                      ),
+                    ),
+                  ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Icon(
-                    Icons.arrow_forward,
-                    color: Color(0xFF0ACDCF),
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
         ),

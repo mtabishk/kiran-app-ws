@@ -24,8 +24,8 @@ class ScreeningPage extends StatelessWidget {
               child: Stack(
                 children: [
                   Positioned.fill(
-                      child: RiveAnimation.asset(
-                          'assets/animations/flutter-puzzle.riv')),
+                      child:
+                          RiveAnimation.asset('assets/animations/3d_face.riv')),
                 ],
               ),
             ),

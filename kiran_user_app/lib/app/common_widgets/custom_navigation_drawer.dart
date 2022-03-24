@@ -7,14 +7,15 @@ import 'package:kiran_user_app/app/services/service_page.dart';
 class CustomNavigationDrawer extends StatelessWidget {
   const CustomNavigationDrawer({
     Key? key,
+    required this.navigationDrawerKey,
   }) : super(key: key);
+  final navigationDrawerKey;
 
   void onClickedDrawerItem(BuildContext context, int index) {
     Navigator.of(context).pop();
     switch (index) {
       case 0:
-        Navigator.of(context)
-            .push(CupertinoPageRoute(builder: (context) => ServicePage()));
+        navigationDrawerKey.currentState!.closeDrawer();
         break;
       case 1:
         Navigator.of(context)
@@ -41,9 +42,9 @@ class CustomNavigationDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _name = 'Sarah Abs';
-    final _email = 'sarah_abs21@gmail.com';
-    final _picUrl = 'assets/icons/sarah-abs-picture.jpg';
+    final _name = 'Muhammad Tabish';
+    final _email = 'mtabishkhanday@gmail.com';
+    final _picUrl = 'assets/images/tabish-picture.png';
     return Drawer(
       child: Material(
         color: kPrimaryColor,
