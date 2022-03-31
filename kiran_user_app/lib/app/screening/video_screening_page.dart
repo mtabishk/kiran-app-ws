@@ -119,7 +119,7 @@ class _VideoScreeningPageState extends State<VideoScreeningPage> {
                     ),
                   ),
                   Positioned(
-                    top: 10.0,
+                    top: 10,
                     child: Container(
                         padding: const EdgeInsets.all(18.0),
                         child: Text(
